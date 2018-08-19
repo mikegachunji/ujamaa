@@ -1,12 +1,15 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flask_login import current_user
 from ujamaa_models.models import User
 
 
 class RegistrationForm(FlaskForm):
+	role = SelectField('Type', choices=[('Lecturer', 'Lecturer'), ('Student', 'Student')])
+	program = SelectField('Program', choices=[('Information Technology', 'Information Technology'), ('Business', 'Business')])
+	university = SelectField('University', choices=[('Moi University', 'Moi University'), ('Kenyatta University', 'Kenyatta University'), ('Jomo Kenyatta University Of Science and Technology', 'Jomo Kenyatta University Of Science and Technology')])
 	username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
 	email = StringField('Email', validators=[DataRequired(), Email()])
 	password = PasswordField('Password', validators=[DataRequired()])
@@ -34,6 +37,9 @@ class LoginForm(FlaskForm):
 
 class UpdateAccountForm(FlaskForm):
 	username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+	program = StringField('Program', validators=[DataRequired(), Email()])
+	university = StringField('University', validators=[DataRequired(), Email()])
+	role = StringField('Type', validators=[DataRequired(), Email()])
 	email = StringField('Email', validators=[DataRequired(), Email()])
 	picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
 	submit = SubmitField('Update')
