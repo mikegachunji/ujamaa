@@ -16,7 +16,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(role=form.role.data, program=form.program.data, university=form.university.data, username=form.username.data, email=form.email.data, password=hashed_password)
+        user = User(user_type=form.user_type.data, program_id=form.program_id.data, university_id=form.university_id.data, username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
@@ -33,8 +33,12 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('main.home'))
+            if current_user.program_id == 1:
+                return redirect(url_for('programs.it_index'))
+            elif current_user.program_id == 2:
+                return redirect(url_for('programs.business_index'))
+            else:
+                return redirect(url_for('programs.economics_index'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', title='Login', form=form)
@@ -53,17 +57,14 @@ def account():
     if form.validate_on_submit():
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
-            current_user.image_file = picture_file
+            current_user.image_file = picture_file        
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
         flash('Your account has been updated!', 'success')
         return redirect(url_for('users.account'))
     elif request.method == 'GET':
-        form.username.data = current_user.username
-        form.program.data = current_user.program
-        form.university.data = current_user.university
-        form.role.data = current_user.role
+        form.username.data = current_user.username       
         form.email.data = current_user.email
     image_file = url_for('static', filename='prof_pics/' + current_user.image_file)
     return render_template('account.html', title='Account',

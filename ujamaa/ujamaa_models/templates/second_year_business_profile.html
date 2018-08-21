@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+ 
+<div class="user-profile">
+  <div class="page-header">
+    <h2>Business Management</h2>
+  </div>
+ 
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card text-center">
+          <div class="card card-primary">
+            <div class="card-header">Second Year Courses</div>
+            {% for course in courses %}
+              <div class="card-body"><a href="#">{{ course.title }}</a></div>              
+            {% endfor %}
+          </div>
+        </div>      
+      </div>
+    </div>
+  </div>     
+</div>
+ 
+{% endblock %}

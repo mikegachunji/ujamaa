@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+ 
+<div class="user-profile">
+  <div class="page-header">
+    <h2>Business Management</h2>
+  </div>
+ 
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card text-center">
+          <div class="card card-primary">
+            <div class="card-header">Year Of Study</div>
+            <div class="card-body"><a href="{{ url_for('programs.first_year_business_profile') }}">First Year</a></div>
+            <div class="card-body"><a href="{{ url_for('programs.second_year_business_profile') }}">Second Year</a></div>
+            <div class="card-body"><a href="{{ url_for('programs.third_year_business_profile') }}">Third Year</a></div>
+            <div class="card-body"><a href="{{ url_for('programs.fourth_year_business_profile') }}">Fourth Year</a></div>
+          </div>
+        </div>      
+      </div>
+    </div>
+  </div>     
+</div>
+ 
+{% endblock %}

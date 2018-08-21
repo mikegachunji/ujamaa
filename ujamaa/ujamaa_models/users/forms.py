@@ -7,9 +7,9 @@ from ujamaa_models.models import User
 
 
 class RegistrationForm(FlaskForm):
-	role = SelectField('Type', choices=[('Lecturer', 'Lecturer'), ('Student', 'Student')])
-	program = SelectField('Program', choices=[('Information Technology', 'Information Technology'), ('Business', 'Business')])
-	university = SelectField('University', choices=[('Moi University', 'Moi University'), ('Kenyatta University', 'Kenyatta University'), ('Jomo Kenyatta University Of Science and Technology', 'Jomo Kenyatta University Of Science and Technology')])
+	user_type = SelectField('Type', choices=[('Lecturer', 'Lecturer'), ('Student', 'Student')])
+	university_id = SelectField('University', choices=[('1', 'Moi University'), ('2', 'Jomo Kenyatta University Of Science and Technology'), ('3', 'Strathmore University'), ('4', 'Kenyatta University') ,('5', 'University Of Nairobi')])
+	program_id = SelectField('Program', choices=[('1', 'Information Technology'), ('2', 'Business Management'), ('3', 'Economics')])
 	username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
 	email = StringField('Email', validators=[DataRequired(), Email()])
 	password = PasswordField('Password', validators=[DataRequired()])
@@ -36,10 +36,7 @@ class LoginForm(FlaskForm):
 
 
 class UpdateAccountForm(FlaskForm):
-	username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
-	program = StringField('Program', validators=[DataRequired(), Email()])
-	university = StringField('University', validators=[DataRequired(), Email()])
-	role = StringField('Type', validators=[DataRequired(), Email()])
+	username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])	
 	email = StringField('Email', validators=[DataRequired(), Email()])
 	picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
 	submit = SubmitField('Update')

@@ -13,13 +13,18 @@ posts = Blueprint('posts', __name__)
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        post = Post(title=form.title.data, content=form.content.data, user_id=current_user.id, program_id = current_user.program_id)
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!', 'success')
-        return redirect(url_for('main.home'))
+        if current_user.program_id == 1:
+                return redirect(url_for('programs.it_index'))
+        elif current_user.program_id == 2:
+            return redirect(url_for('programs.business_index'))
+        else:
+            return redirect(url_for('programs.economics_index'))
     return render_template('create_post.html', title='New Post',
-                           form=form, legend='New Post')
+                            form=form, legend='New Post')
 
 
 @posts.route("/post/<int:post_id>")

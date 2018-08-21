@@ -18,10 +18,25 @@
 	        <span class="navbar-toggler-icon"></span>
 	      </button>
 	      <div class="collapse navbar-collapse" id="navbarToggle">
+            {% if current_user.program_id == 1 %}
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{{ url_for('main.home') }}">Home</a>
-              <a class="nav-item nav-link" href="{{ url_for('main.about') }}">About</a>
+              <a class="nav-item nav-link" href="{{ url_for('programs.it_index') }}">Home</a>
+              <a class="nav-item nav-link" href="{{ url_for('programs.it_profile') }}">Resources</a>
             </div>
+            {% endif %}
+            {% if current_user.program_id == 2 %}
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{{ url_for('programs.business_index') }}">Home</a>
+              <a class="nav-item nav-link" href="{{ url_for('programs.business_profile') }}">Resources</a>
+            </div>
+            {% endif %}
+            {% if current_user.program_id == 3 %}
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{{ url_for('programs.economics_index') }}">Home</a>
+              <a class="nav-item nav-link" href="{{ url_for('programs.economics_profile') }}">Resources</a>
+            </div>
+            {% endif %}
+
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if current_user.is_authenticated %}
@@ -51,19 +66,7 @@
           {% endwith %}
 		{% block content %}{% endblock %}
 	    </div>
-	    <div class="col-md-4">
-	      <div class="content-section">
-	        <h3>Our Sidebar</h3>
-	        <p class='text-muted'>You can put any information here you'd like.
-	          <ul class="list-group">
-	            <li class="list-group-item list-group-item-light">Latest Posts</li>
-	            <li class="list-group-item list-group-item-light">Announcements</li>
-	            <li class="list-group-item list-group-item-light">Calendars</li>
-	            <li class="list-group-item list-group-item-light">etc</li>
-	          </ul>
-	        </p>
-	      </div>
-	    </div>
+	
 	  </div>
 	</main>
 
