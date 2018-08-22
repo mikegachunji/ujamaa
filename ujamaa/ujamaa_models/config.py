@@ -10,3 +10,12 @@ class Config:
 	MAIL_USE_TLS = True
 	MAIL_USERNAME = 'mikegachunji@gmail.com'
 	MAIL_PASSWORD = 'maguyz94'
+	# grab the folder of the top-level directory of this project
+	BASEDIR = os.path.abspath(os.path.dirname(__file__))
+	TOP_LEVEL_DIR = os.path.abspath(os.curdir)
+	# Uploads
+	UPLOADS_DEFAULT_DEST = TOP_LEVEL_DIR + '/ujamaa_models/static/img/'
+	UPLOADS_DEFAULT_URL = 'http://localhost:5000/static/img/'
+	 
+	UPLOADED_DOCUMENTS_DEST = TOP_LEVEL_DIR + '/ujamaa_models/static/img/'
+	UPLOADED_DOCUMENTS_URL = 'http://localhost:5000/static/img/'

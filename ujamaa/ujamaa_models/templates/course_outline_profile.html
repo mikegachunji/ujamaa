@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+ 
+<div class="user-profile">
+  <div class="page-header">
+    <h2>Course Outlines</h2>
+  </div>
+ 
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card text-center">
+          <div class="card card-primary">
+            <div class="card-header">Resources</div>
+            <div class="card-body"><a href="{{ url_for('courseoutlines.add_course_outline', course_id=course_id) }}">Upload Course Outline</a></div>            
+            {% for courseoutline in courseoutlines %}
+            <div class="card-body"><a href="{{ url_for('courseoutlines.uploaded_file', filename=courseoutline.document_filename) }}">{{ courseoutline.title }}</a></div> 
+            {% endfor %}            
+          </div>
+        </div>      
+      </div>
+    </div>
+  </div>     
+</div>
+ 
+{% endblock %}

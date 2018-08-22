@@ -14,7 +14,7 @@
           <div class="card card-primary">
             <div class="card-header">Third Year Courses</div>
             {% for course in courses %}
-              <div class="card-body"><a href="#">{{ course.title }}</a></div>              
+              <div class="card-body"><a href="{{ url_for('programs.third_year_business_course_profile' ,course_id=course.id) }}">{{ course.title }}</a></div>              
             {% endfor %}
           </div>
         </div>      

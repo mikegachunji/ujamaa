@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+ 
+<div class="user-profile">
+  <div class="page-header">
+    <h2>{{ courseoutline.title }}</h2>
+  </div>
+ 
+  <div class="row">
+    <div class="card panel-primary">
+      <div class="card-header">Description</div>
+      <div class="card-body">{{ courseoutline.description }}</div>
+    </div> 
+    
+
+    <div class="card panel-primary">
+      <div class="card-header">Path</div>
+      <div class="card-body">{{ courseoutline.document_url }}</div>
+    </div> 
+ 
+  </div>
+</div>
+ 
+{% endblock %}

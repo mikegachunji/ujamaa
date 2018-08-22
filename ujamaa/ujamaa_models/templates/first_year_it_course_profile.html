@@ -4,7 +4,7 @@
  
 <div class="user-profile">
   <div class="page-header">
-    <h2>Economics</h2>
+    <h2>Course Profile</h2>
   </div>
  
   <div class="row">
@@ -12,10 +12,10 @@
       <div class="card">
         <div class="card text-center">
           <div class="card card-primary">
-            <div class="card-header">Second Year Courses</div>
-            {% for course in courses %}
-              <div class="card-body"><a href="{{ url_for('programs.second_year_economics_course_profile' ,course_id=course.id) }}">{{ course.title }}</a></div>              
-            {% endfor %}
+            <div class="card-header">Resources</div>
+            <div class="card-body"><a href="{{ url_for('courseoutlines.course_outline_profile', course_id=course_id) }}">Course Outlines</a></div>
+            <div class="card-body"><a href="#">Past Examinations</a></div>
+            <div class="card-body"><a href="#">Notes</a></div>
           </div>
         </div>      
       </div>

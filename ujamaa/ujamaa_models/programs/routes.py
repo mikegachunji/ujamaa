@@ -96,6 +96,72 @@ def fourth_year_business_profile():
 	return render_template('fourth_year_business_profile.html', courses=courses)
 
 
+@programs.route("/course_outline_profile/<course_id>")
+def course_outline_profile(course_id):
+	courseoutlines = CourseOutline.query.filter(CourseOutline.program_id == 1).filter(CourseOutline.course_id == 1).all()
+	return render_template('course_outline_profile.html', courseoutlines=courseoutlines)
+
+
+@programs.route("/first_year_it_course_profile/<course_id>")
+def first_year_it_course_profile(course_id):
+	return render_template('first_year_it_course_profile.html', course_id=course_id)
+
+
+@programs.route("/second_year_it_course_profile/<course_id>")
+def second_year_it_course_profile(course_id):
+	return render_template('second_year_it_course_profile.html', course_id=course_id)
+
+
+@programs.route("/third_year_it_course_profile/<course_id>")
+def third_year_it_course_profile(course_id):
+	return render_template('third_year_it_course_profile.html', course_id=course_id)
+
+
+@programs.route("/fourth_year_it_course_profile/<course_id>")
+def fourth_year_it_course_profile(course_id):
+	return render_template('fourth_year_it_course_profile.html', course_id=course_id)
+
+
+@programs.route("/first_year_business_course_profile/<course_id>")
+def first_year_business_course_profile(course_id):
+	return render_template('first_year_business_course_profile.html', course_id=course_id)
+
+
+@programs.route("/second_year_business_course_profile/<course_id>")
+def second_year_business_course_profile(course_id):
+	return render_template('second_year_business_course_profile.html', course_id=course_id)
+
+
+@programs.route("/third_year_business_course_profile/<course_id>")
+def third_year_business_course_profile(course_id):
+	return render_template('third_year_business_course_profile.html', course_id=course_id)
+
+
+@programs.route("/fourth_year_business_course_profile/<course_id>")
+def fourth_year_business_course_profile(course_id):
+	return render_template('fourth_year_business_course_profile.html', course_id=course_id)
+
+
+@programs.route("/first_year_economics_course_profile/<course_id>")
+def first_year_economics_course_profile(course_id):
+	return render_template('first_year_economics_course_profile.html', course_id=course_id)
+
+
+@programs.route("/second_year_economics_course_profile/<course_id>")
+def second_year_economics_course_profile(course_id):
+	return render_template('second_year_economics_course_profile.html', course_id=course_id)
+
+
+@programs.route("/third_year_economics_course_profile/<course_id>")
+def third_year_economics_course_profile(course_id):
+	return render_template('third_year_economics_course_profile.html', course_id=course_id)
+
+
+@programs.route("/fourth_year_economics_course_profile/<course_id>")
+def fourth_year_economics_course_profile(course_id):
+	return render_template('fourth_year_economics_course_profile.html', course_id=course_id)
+
+
 @programs.route("/business_index")
 def business_index():
 	page = request.args.get('page', 1, type=int)

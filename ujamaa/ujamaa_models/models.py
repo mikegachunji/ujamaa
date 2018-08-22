@@ -143,14 +143,17 @@ class CourseOutline(db.Model):
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    content = db.Column(db.Text, nullable=False)
+    document_filename = db.Column(db.String, default=None, nullable=True)
+    document_url = db.Column(db.String, default=None, nullable=True)
     course_id = db.Column(db.Integer, db.ForeignKey('course.id'))    
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     program_id = db.Column(db.Integer, db.ForeignKey('program.id'))
 
-    def __init__(self, title, description, course_id, user_id, program_id):
+    def __init__(self, title, description, course_id, user_id, program_id, document_filename=None, document_url=None):
         self.title = title
         self.description = description
+        self.document_filename = document_filename
+        self.document_url = document_url
         self.course_id = course_id
         self.user_id = user_id
         self.program_id = program_id
